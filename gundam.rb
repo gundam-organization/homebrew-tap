@@ -11,6 +11,11 @@ class Gundam < Formula
   license "LGPL-2.1 license"
   head "https://github.com/gundam-organization/gundam.git", branch: "main"
 
+  bottle do
+    rebuild 1
+    sha256 cellar: :any, arm64_ventura: "22a95a3ead8a4a6fb45149abe6f8162cffffd08ba12c84fa30234b9d7c7f4cc6"
+  end
+
   # depends_on "cmake" => :build
 
   depends_on "root"
@@ -28,6 +33,7 @@ class Gundam < Formula
 
     args = std_cmake_args + %W[
       -D WITH_GUNDAM_ROOT_APP=OFF
+      -D USE_STATIC_LINKS=ON
     ]
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
