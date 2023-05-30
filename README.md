@@ -1,2 +1,3 @@
 # homebrew-tap
-Homebrew tap for install GUNDAM on macOS
+
+Homebrew tap for installing GUNDAM on macOS
