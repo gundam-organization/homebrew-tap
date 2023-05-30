@@ -9,10 +9,10 @@ class Gundam < Formula
   license "LGPL-2.1-or-later"
   head "https://github.com/gundam-organization/gundam.git", branch: "main"
 
-  # bottle do
-  #   rebuild 1
-  #   sha256 cellar: :any, arm64_ventura: "22a95a3ead8a4a6fb45149abe6f8162cffffd08ba12c84fa30234b9d7c7f4cc6"
-  # end
+  bottle do
+    rebuild 1
+    sha256 cellar: :any, arm64_ventura: "7088931fa080160481c9f06758f4e0fdf3893863aa4cee5b87df8b462c1192c3"
+  end
 
   depends_on "cmake" => :build
   depends_on "nlohmann-json" => :build
