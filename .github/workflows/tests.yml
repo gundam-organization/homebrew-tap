@@ -4,8 +4,8 @@ on:
     branches:
       - main
   pull_request:
-env:
-  HOMEBREW_DISABLE_LOAD_FORMULA: 0
+#env:
+#  HOMEBREW_DISABLE_LOAD_FORMULA: 0
 jobs:
   test-bot:
     strategy:
