@@ -15,8 +15,8 @@ class Gundam < Formula
   # end
 
   depends_on "cmake" => :build
-  depends_on "yaml-cpp" => :build
   depends_on "nlohmann-json" => :build
+  depends_on "yaml-cpp" => :build
   depends_on "zlib" => :build
   depends_on "root"
 
@@ -30,5 +30,4 @@ class Gundam < Formula
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
-
 end
