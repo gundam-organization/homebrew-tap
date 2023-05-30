@@ -6,7 +6,7 @@ class Gundam < Formula
   url "https://github.com/gundam-organization/gundam.git",
     tag:      "1.7.1",
     revision: "cbcbf2a16a844294cf6acf5721b26d1fa6dc61e5"
-  license "LGPL-2.1 license"
+  license "LGPL-2.1-or-later"
   head "https://github.com/gundam-organization/gundam.git", branch: "main"
 
   # bottle do
