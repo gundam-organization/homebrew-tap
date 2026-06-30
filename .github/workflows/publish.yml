@@ -3,15 +3,21 @@ on:
   pull_request_target:
     types:
       - labeled
+
+permissions:
+  actions: read
+  contents: write
+  packages: write
+  pull-requests: read
+
 jobs:
   pr-pull:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
+    name: brew pr-pull
     strategy:
       matrix:
-        os: [
-#          ubuntu-22.04,
-          macos-15
-        ]
+        os:
+          - macos-15
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Homebrew
@@ -26,7 +32,8 @@ jobs:
           HOMEBREW_GITHUB_PACKAGES_TOKEN: ${{ github.token }}
           HOMEBREW_GITHUB_PACKAGES_USER: ${{ github.actor }}
           PULL_REQUEST: ${{ github.event.pull_request.number }}
-        run: brew pr-pull --debug --tap=$GITHUB_REPOSITORY $PULL_REQUEST
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: brew pr-pull --debug --tap="$GITHUB_REPOSITORY" --head-sha="$HEAD_SHA" "$PULL_REQUEST"
 
       - name: Push commits
         uses: Homebrew/actions/git-try-push@master
@@ -38,4 +45,4 @@ jobs:
         if: github.event.pull_request.head.repo.fork == false
         env:
           BRANCH: ${{ github.event.pull_request.head.ref }}
-        run: git push --delete origin $BRANCH
+        run: git push --delete origin "$BRANCH"
