@@ -21,3 +21,5 @@ Pull requests run `brew test-bot` on both Apple Silicon and Intel macOS runners.
 When the checks pass, add the `pr-pull` label to the pull request. The publish
 workflow then runs `brew pr-pull`, uploads the bottles to GHCR, and commits the
 generated `bottle do` block back to `main`.
+
+test
